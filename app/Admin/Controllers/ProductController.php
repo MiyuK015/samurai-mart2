@@ -43,7 +43,7 @@ class ProductController extends AdminController
         $grid->column('created_at', __('Created at'))->sortable();
         $grid->column('updated_at', __('Updated at'))->sortable();
 
-        $grid->filter(function($filter) {
+        $grid->filter(function ($filter) {
             $filter->like('name', '商品名');
             $filter->like('description', '商品説明');
             $filter->between('price', '金額');
@@ -124,7 +124,7 @@ class ProductController extends AdminController
                 Product::create([
                     'name' => $value[0],
                     'description' => $value[1],
-                    'price' => value[2],
+                    'price' => $value[2],
                     'category_id' => $value[3],
                     'image' => $value[4],
                     'recommend_flag' => $value[5],

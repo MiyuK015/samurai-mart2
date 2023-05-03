@@ -49,7 +49,7 @@ class CategoriesTableSeeder extends Seeder
                     Category::create([
                         'name' => $computer_category,
                         'description' => $computer_category,
-                        'major_category_name' => $major_caregoty_name
+                        'major_category_name' => $major_category_name
                     ]);
                 }
             }

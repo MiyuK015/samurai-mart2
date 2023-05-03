@@ -13,7 +13,7 @@ class CsvImport extends AbstractTool
 
         $('.csv-import').click(function() {
             var select = document.getElementById('files');
-            document.getElementByID("files").click();
+            document.getElementById("files").click();
             select.addEventListener('change',function() {
                 var formdata = new FormData();
                 formdata.append( "file", $("input[name='product']").prop("files")[0] );

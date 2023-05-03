@@ -77,7 +77,7 @@ class CartController extends Controller
 
         $count += 1;
         $number += 1;
-        $cart = Cart::instance(Auth::user()->id)->countent();
+        $cart = Cart::instance(Auth::user()->id)->content();
 
         $price_total = 0;
         $qty_total = 0;
@@ -110,6 +110,18 @@ class CartController extends Controller
                 ]
             );
 
+        $pay_jp_secret = env('PAYJP_SECRET_KEY');
+        \Payjp\Payjp::setApiKey($pay_jp_secret);
+
+        $user = Auth::user();
+
+        $res = \Payjp\Charge::create(
+            [
+                "customer" => $user->token,
+                "amount" => $price_total,
+                "currency" => 'jpy'
+            ]
+        );
 
         Cart::instance(Auth::user()->id)->destroy();
 
